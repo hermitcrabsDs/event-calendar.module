@@ -1,0 +1,316 @@
+.flex-row {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+}
+.width-50{
+   width:50%
+}
+.width-60 {
+   width: 60%;
+}
+.width-40 {
+   width: 40%;
+}
+.justify-space-bw {
+   -webkit-box-pack: justify;
+   -ms-flex-pack: justify;
+   justify-content: space-between;
+}
+.flex-wrap {
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+}
+.event-calender h2  span {
+   font-weight: 400;
+}
+
+/*=========================== Row 1 ====================================== */
+.event-calender h2 {
+   margin: 0;
+}
+#event-datepicker .datepicker-picker {
+   display: block;
+}
+.event-calender .row_1 {
+   margin: 0 0 48px;
+}
+.count_title {
+   color: var(--tertiary);
+   letter-spacing: 2.363px;
+   line-height: normal;
+   text-align: center;
+   font-weight: 400;
+   opacity: 0.33;
+}
+#countDiv > div {
+   width: 33%;
+   text-align: center;
+}
+#countDiv > div + div {
+   border-left: 1px solid rgba(30, 29, 35, 0.50);
+}
+#countDiv .smallText {
+   color: rgba(30, 29, 35, 0.50);
+   font-family: Metropolis;
+   font-size: 13.5px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 120%; /* 16.2px */
+   letter-spacing: 2.97px;
+   text-transform: uppercase;
+}
+
+div#countDiv > div span:first-child {
+   color: rgba(30, 29, 35, 0.50);
+   font-family: Metropolis;
+   font-size: 42.63px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: normal;
+   letter-spacing: 0.853px;
+}
+
+
+
+div#event-item {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+.event-calender #event-item .inner-wrap {
+   background: #000;
+   border: 1px solid;
+   border-radius: 3px;
+   width: 100%;
+}
+.event-calender .inner-wrap > img {
+   height: 382px;
+   object-fit: cover;
+   object-position: top;
+}
+.event-calender .event_content {
+   padding: 32px;
+   color: #fff;
+   flex-wrap: wrap;
+}
+.event-calender .edate {
+   background: rgba(255, 255, 255, 0.25);
+   padding: 16px 24px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.event-calender .edate .day {
+   color: #FFF;
+   font-size: 31.98px;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 0.64px;
+}
+.event-calender .edate .mon {
+   text-transform: uppercase;
+   font-size: 13.5px;
+   font-weight: 700;
+   line-height: normal;
+   letter-spacing: 0.27px;
+}
+.event-calender .type {
+   color: rgba(255, 255, 255, 0.66);
+   font-size: 13.5px;
+   font-weight: 500;
+   line-height: 120%;
+   letter-spacing: 2.498px;
+   text-transform: uppercase;
+}
+.event-calender .type span{
+   color: rgba(255, 255, 255, 0.33);
+}
+.event-calender .e_title {
+   font-size: 23.99px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 110%; /* 26.389px */
+   letter-spacing: 0.48px;
+   margin: 0 0 4px;
+}
+.event-calender .econtent {
+   color: #DFDFDE;
+   font-size: 18px;
+   line-height: 110%; /* 19.8px */
+   letter-spacing: 0.36px;
+}
+.event-calender .calender {
+   padding-left: 16px;
+}
+.event-calender .calander-wrap {
+   border-radius: var(--Border-Radius, 3px);
+   background: rgba(223, 223, 222, 0.33);
+   padding: 48px;
+}
+.event-calender .c_title {
+   color: var(--thorit-black, #000);
+   font-size: 42.63px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 110%;
+   letter-spacing: -0.213px;
+   margin: 0;
+}
+.datepicker-header .datepicker-controls {
+   padding: 8px;
+}
+.datepicker.datepicker-inline {
+   width: auto;
+}
+.datepicker-view {
+   width: auto;
+}
+.datepicker-picker {
+   background: transparent;
+}
+.datepicker-header .datepicker-controls button.button {
+   background-color: transparent!important;
+   font-weight: 500;
+   padding: 0;
+   height: auto;
+}
+.datepicker-controls .view-switch {
+   color: #000;
+   font-family: Metropolis;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 120%;
+   letter-spacing: 0.27px;
+}
+.datepicker-header .datepicker-controls button.prev-button,
+.datepicker-header .datepicker-controls button.next-btn{
+   background-image: url(https://44137497.fs1.hubspotusercontent-na1.net/hubfs/44137497/left-arrow.png);
+   color: transparent;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+.datepicker-header .datepicker-controls button.next-btn {
+   background-image: url(https://44137497.fs1.hubspotusercontent-na1.net/hubfs/44137497/right-arrow.png);
+}
+.datepicker-grid {
+   margin: 0 -4px;
+   justify-content: center;
+}
+.datepicker-grid > span {
+   margin: 4px;
+   background: rgba(255, 255, 255, 0.75);
+}
+.datepicker-grid > span {
+   margin: 4px;
+   border-radius: 0;
+   background: rgba(255, 255, 255, 0.75);
+   color: #000;
+   font-family: Metropolis;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 120%;
+   letter-spacing: 0.27px;
+   padding: 8px;
+   height:auto;
+}
+.datepicker-grid > span.next,
+.datepicker-grid > span.prev{
+   background: rgba(223, 223, 222, 0.25);
+}
+.datepicker-main{
+   padding:0;
+}
+.datepicker-grid>span.datepicker-cell.focused {
+   background: #fff;
+   color: #000;
+   font-family: Metropolis;
+   font-size: 18px;
+}
+.datepicker-grid > span.datepicker-cell.selected,
+.datepicker-grid > span.datepicker-cell:hover{
+   padding: 8px;
+   background: #D81F49;
+   color: #FFF;
+   font-family: Metropolis;
+   font-size: 13.5px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 120%;
+   letter-spacing: 0.203px;
+}
+.datepicker .dow {
+   color: #000;
+   font-family: Metropolis;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 120%;
+   letter-spacing: 0.27px;
+   height: auto;
+   text-transform: capitalize;
+}
+
+.loader {
+   width: 48px;
+   height: 48px;
+   border: 5px solid #FFF;
+   border-bottom-color: #FF3D00;
+   border-radius: 50%;
+   display: inline-block;
+   box-sizing: border-box;
+   animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+   0% {
+	  transform: rotate(0deg);
+   }
+   100% {
+	  transform: rotate(360deg);
+   }
+} 
+
+@media(max-width:991px){
+   .event-calender .calander-wrap {
+	  padding: 20px;
+   }
+}
+
+@media(max-width:767px){
+   .m-padding-0 {
+	  padding: 0 !important;
+   }
+   .m-width-100 {
+	  width: 100%;
+   }
+   .m-mb-30{
+	  margin-bottom:30px;  
+   }
+   .m-flex-dir_row_rev {
+	  -webkit-box-orient: vertical;
+	  -webkit-box-direction: reverse;
+	  -ms-flex-direction: column-reverse;
+	  flex-direction: column-reverse;
+   }
+   .event-calender .calander-wrap {
+	  padding: 40px 15px;
+   }
+}
+@media(max-width:540px){
+   .event-calender .type {
+	  margin-bottom: 10px;
+   }
+
+   .event-calender .e_title {
+	  margin-bottom: 10px;
+   }
+
+   .event-calender .econtent {
+	  margin-bottom: 20px;
+   }
+
+}

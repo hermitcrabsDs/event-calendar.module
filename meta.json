@@ -1,0 +1,21 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 140727654050,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/jquery-ui.css",
+    "name" : "jquery-ui.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/days.min.js",
+    "name" : "days.min.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/jquery-ui.js",
+    "name" : "jquery-ui.js"
+  } ],
+  "label" : "Event Calendar",
+  "is_available_for_new_content" : true
+}

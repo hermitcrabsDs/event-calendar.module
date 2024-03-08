@@ -1,0 +1,149 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+
+{% set event = hubdb_table_rows(module.hubdbtable_field, "orderBy=date&limit=1&date__gte="~local_dt|unixtimestamp ) %}
+
+<div class="event-calender D">
+   <div class="row_1 flex-row justify-space-bw flex-wrap">
+	  <div class="width-60 m-width-100 m-mb-30">
+		 <h6>{{ module.title }}</h6>	 
+		 <h2>{{ module.sub_title }}</h2> 
+	  </div>
+	  <div class="width-40 m-width-100">
+		 <div>
+			<h6 class="count_title">
+			   {{ module.countdown_title }}
+			</h6>
+			<div id='countDiv' class="flex-row justify-space-bw">
+			   <div>
+				  <span class='days'></span>
+				  <div class='smallText'>{{ module.day }}</div>
+			   </div>
+			   <div>
+				  <span class='hours'></span>
+				  <div class='smallText'>{{ module.hours }}</div>
+			   </div>
+			   <div>
+				  <span class='minutes'></span>
+				  <div class='smallText'>{{ module.minutes }}</div>
+			   </div>
+			</div> 	
+		 </div>
+	  </div>
+   </div>
+   <div class="row_2 flex-row m-flex-dir_row_rev">
+	  <div class="event width-50 m-width-100 m-padding-0">
+		 <div id="event-item">
+			
+			<div class="inner-wrap">
+			   <img src="https://44137497.fs1.hubspotusercontent-na1.net/hubfs/44137497/Thorit_October2023/Images/Banner-image.jpeg">
+			   <div class="event_content flex-row justify-space-bw">
+				  <div class="">
+					 <div class="type">Digital Marketing<span class="lang"> · DE</span></div>
+					 <div class="e_title">KI im Marketing</div>
+					 <div class="econtent">mit Filomena Soliman & Jan Gladziejewski</div>
+				  </div>
+				  <div class="edate">
+					 <span class="day">11</span>
+					 <span class="mon">Sep</span>
+				  </div>
+			   </div>
+			</div>
+		 </div>
+	  </div>
+	  <div class="calender width-50 m-width-100 m-padding-0 m-mb-30">
+		 <div class="calander-wrap">
+			<div class="c_title">
+			   {{ module.calender_title }}
+			</div>
+			<div id="event-datepicker"></div>
+		 </div>
+	  </div>
+   </div>
+</div>
+
+{% require_js %}
+<script>
+   const currentDate = "{{ local_dt|unixtimestamp }}"
+   const countDate = "{{ event[0].date }}"
+   const path = "https://api.hubapi.com/cms/v3/hubdb/tables/7284998/rows?portalId=44137497&limit=100"
+   const eventItem = document.getElementById('event-item');
+   const elem = document.getElementById('event-datepicker');
+
+   const datepicker = new Datepicker(elem, {
+	  language: 'de'
+   }); 
+
+
+   function timingCalc(endtime) {
+	  'use strict';
+	  var timeTotal = endtime - Date.parse(new Date()),
+		  //         timeSeconds = Math.floor((timeTotal / 1000) % 60),
+		  timeMinutes = Math.floor((timeTotal / 1000 / 60) % 60),
+		  timeHours = Math.floor((timeTotal / (1000 * 60 * 60)) % 24),
+		  timeDays = Math.floor(timeTotal / (1000 * 60 * 60 * 24));
+	  return {
+		 //         'seconds': timeSeconds,
+		 'total': timeTotal,
+		 'minutes': timeMinutes,
+		 'hours': timeHours,
+		 'days': timeDays
+	  };
+
+   }
+   function installCalc(id, endtime) {
+	  'use strict';
+	  
+	  var calc = document.getElementById(id),
+		  daySpan = calc.querySelector(".days"),
+		  hourSpan = calc.querySelector(".hours"),
+		  minSpan = calc.querySelector(".minutes");
+	  // 		  secSpan = calc.querySelector(".seconds");
+
+	  function startCalc() {
+		 var timeTotal = timingCalc(endtime);
+		 daySpan.innerHTML = ("0" + timeTotal.days).slice(-2);
+		 hourSpan.innerHTML = ("0" + timeTotal.hours).slice(-2);
+		 minSpan.innerHTML = ("0" + timeTotal.minutes).slice(-2);
+		 // 		 secSpan.innerHTML = ("0" + timeTotal.seconds).slice(-2);
+
+		 if (timeTotal.total <= 0) {
+			clearInterval(timingNow);
+		 }
+	  }
+	  startCalc();
+	  var timingNow = setInterval(startCalc, 1000);
+   }
+
+   installCalc("countDiv", countDate);
+   
+   elem.addEventListener('changeDate', function (e, details) { 
+	  let cdate = moment(e.detail.date).format("MM/DD/YY")
+	  let currentDateString = moment(e.detail.date).format("MM/DD/YY");
+	  currentDateString = currentDateString +' 5:30:00 AM GMT+05:30';
+	  const calGetDate = moment(currentDateString).format('x');
+	  console.log("ca",calGetDate)
+	  let newPath = `${path}&date__gte=${calGetDate}`
+	  getEvents(newPath)
+   });
+
+   async function getEvents(URL) {
+	  eventItem.innerHTML == '<span class="loader"></span>';
+	  const response = await fetch(URL);
+	  const events = await response.json();
+	  if(events.total > 0){
+		 const data = events.results[0].values;
+		 let date = data.date;
+		 let monthName = dayjs(date).format('MMM')
+		 let day = dayjs(date).format('DD')
+		 let contentHTML = " ";
+		 let outerDiv = document.createElement('div');
+		 outerDiv.setAttribute('class', 'outerDiv');
+		 eventItem.innerHTML = `<div class="inner-wrap"><img src="${ data.image.url}" alt="${data.event_title}"><div><div><div class="event_content flex-row justify-space-bw"><div class=""><div class="type">${data.event_type}<span class="lang"> · ${data.language.label}</span></div><div class="e_title">${data.event_title}</div><div class="econtent">mit Filomena Soliman & Jan Gladziejewski</div></div><div class="edate"><span class="day">${day}</span><span class="mon">${monthName}</span></div></div></div>`
+	  } else {
+		 eventItem.innerHTML = "<h3>Not found</h3>"
+	  }
+   }
+   getEvents(`${path}&date__gte=${currentDate}`)
+</script>
+{% end_require_js %}
