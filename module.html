@@ -1,10 +1,10 @@
 {% set event = hubdb_table_rows(module.hubdbtable_field, "orderBy=date&limit=1&date__gte="~local_dt|unixtimestamp )}
 
-<div class="event-calender D">
+<div class="event-calender D"
    <div class="row_1 flex-row justify-space-bw flex-wrap">
 	  <div class="width-60 m-width-100 m-mb-30">
-		 <h6>{{ module.title }}</h6>	 
-		 <h2>{{ module.sub_title }}</h2> 
+		 <h5>{{ module </h6>	 
+		 <h1>{{ module.sub_title }}</h2> 
 	  </div>
 	  <div class="width-40 m-width-100">
 		 <div>
