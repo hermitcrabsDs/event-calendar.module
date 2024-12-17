@@ -1,7 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-
-
-{% set event = hubdb_table_rows(module.hubdbtable_field, "orderBy=date&limit=1&date__gte="~local_dt|unixtimestamp ) %}
+{% set event = hubdb_table_rows(module.hubdbtable_field, "orderBy=date&limit=1&date__gte="~local_dt|unixtimestamp )}
 
 <div class="event-calender D">
    <div class="row_1 flex-row justify-space-bw flex-wrap">
